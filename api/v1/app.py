@@ -8,7 +8,7 @@ from api.v1.views import app_views
 
 
 app = Flask(__name__)
-@app.register_blueprint(app_views)
+app.register_blueprint(app_views)
 @app.teardown_appcontext
 def reload_session(exception):
     """Reload the DB session"""
