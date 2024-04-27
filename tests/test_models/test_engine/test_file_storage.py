@@ -115,9 +115,19 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(json.loads(string), json.loads(js))
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    def test_reload(self):
+        """ Storage file is successfully loaded to __objects """
+        new = BaseModel()
+        models.storage.save()
+        models.storage.reload()
+        for obj in models.storage.all().values():
+            loaded = obj
+        self.assertEqual(new.to_dict()['id'], loaded.to_dict()['id'])
+
+    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
     def test_get(self):
         """test that the get function returns the correct object"""
-        id = '945639a3-6ecf-4f65-b526-e81527feddfb'
+        id = '5978ef50-0e56-460b-9762-eec5a5e6eed3'
         obj = models.storage.get('City', id)
         self.assertIs(type(obj), City)
         self.assertEqual(obj.id,
