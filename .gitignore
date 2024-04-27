@@ -1,2 +1,5 @@
 # DIRECTORIES
 venv/
+
+#FILES
+*.pyc
