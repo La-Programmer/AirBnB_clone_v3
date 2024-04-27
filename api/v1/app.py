@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Returns the status of the API"""
 
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from os import getenv
 from api.v1.views import app_views
@@ -13,6 +13,12 @@ app.register_blueprint(app_views)
 def reload_session(exception):
     """Reload the DB session"""
     storage.close()
+
+def page_not_found(error):
+    """404 error handler"""
+    return jsonify({"error": "Not found"})
+
+app.errorhandler(404)(page_not_found)
 
 if __name__ == '__main__':
     host = getenv('HBNB_API_HOST')
