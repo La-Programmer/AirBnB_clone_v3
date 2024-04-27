@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This module is the base api file for the app"""
 
 from flask import jsonify
 from models import storage
