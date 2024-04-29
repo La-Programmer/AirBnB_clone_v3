@@ -68,10 +68,12 @@ class DBStorage:
     def new(self, obj):
         """add the object to the current database session"""
         self.__session.add(obj)
+        # print(f"New object {obj} added")
 
     def save(self):
         """commit all changes of the current database session"""
         self.__session.commit()
+        # print("Commit made to DB")
 
     def delete(self, obj=None):
         """delete from the current database session obj if not None"""
