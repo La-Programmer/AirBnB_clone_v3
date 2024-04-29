@@ -1,28 +1,28 @@
-#1/usr/bin/python3
+#!/usr/bin/python3
 """Flask view for the State class"""
 
 from models.state import State
 from flask import jsonify, abort, request
 from models import storage
-# from models.engine.db_storage import classes
 from api.v1.views import app_views
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
+def get_states():
+    """Gets a list of all states in DB"""
+    states = storage.all('State')
+    result = []
+    for key, value in states.items():
+        result.append(value.to_dict())
+    return jsonify(result)
+
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
-def get_states(state_id=None):
-    """Gets a list of all states or a state of the given id"""
-    if state_id is None:
-        states = storage.all('State')
-        result = []
-        for key, value in states.items():
-            result.append(value.to_dict())
-        return jsonify(result)
+def get_state(state_id):
+    """Gets a state of the given id"""
+    state = storage.get('State', state_id)
+    if not state:
+        abort(404)
     else:
-        state = storage.get('State', state_id)
-        if not state:
-            abort(404)
-        else:
-            return jsonify(state.to_dict())
+        return jsonify(state.to_dict())
 
 @app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
 def delete_state(state_id):
