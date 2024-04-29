@@ -6,7 +6,7 @@ from models import storage
 from api.v1.views import app_views
 
 
-@app_views.route('GET /api/v1/cities/<city_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
 def get_city(city_id):
     """Gets the city data with the city ID"""
     city = storage.get('City', city_id)
