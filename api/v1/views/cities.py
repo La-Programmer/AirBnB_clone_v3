@@ -40,28 +40,28 @@ def delete_city(city_id):
 @app_views.route('/states/<state_id>/cities', methods=['POST'], strict_slashes=False)
 def create_city(state_id):
     """Creates a new city with data from the POST Method"""
-    if not request.get_json():
+    if not request.json:
         return jsonify({'error': 'Not a JSON'}), 400
-    elif 'name' not in request.get_json():
+    elif 'name' not in request.json:
         return jsonify({'error': 'Missing name'}), 400
     else:
         data = request.get_json()
-        new_city = City(**data)
+        new_city = City(**data, state_id=state_id)
         new_city.save()
-        return new_city.to_dict(), 201
+        return jsonify(new_city.to_dict()), 201
     
-@app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=True)
+@app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
 def update_city(city_id):
     """Updates the city instance with data from PUT method"""
     city_obj = storage.get('City', city_id)
     if not city_obj:
         abort(404)
-    if not request.get_json():
+    if not request.json:
         return jsonify({"error": "Not a JSON"}), 400
     ignore = ['id', 'state_id', 'created_at', 'updated_at']
     data = request.get_json()
     for key, value in data.items():
         if key not in ignore:
-            city_obj[key] = value
+            setattr(city_obj, key, value)
     city_obj.save()
-    return city_obj.to_dict(), 200
+    return jsonify(city_obj.to_dict()), 200
