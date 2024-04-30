@@ -11,14 +11,18 @@ from flask_cors import CORS
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 app.register_blueprint(app_views)
+
+
 @app.teardown_appcontext
 def reload_session(exception):
     """Reload the DB session"""
     storage.close()
 
+
 def page_not_found(error):
     """404 error handler"""
     return jsonify({"error": "Not found"})
+
 
 app.errorhandler(404)(page_not_found)
 

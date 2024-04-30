@@ -5,7 +5,10 @@ from flask import jsonify, abort, request
 from models import storage
 from api.v1.views import app_views
 
-@app_views.route('/cities/<city_id>/places', methods=['GET'], strict_slashes=False)
+
+@app_views.route('/cities/<city_id>/places',
+                 methods=['GET'],
+                 strict_slashes=False)
 def get_places_in_cities(city_id):
     """Gets a list of all the places in a city"""
     city = storage.get('City', city_id)
@@ -19,7 +22,10 @@ def get_places_in_cities(city_id):
                 result.append(places[key].to_dict())
         return jsonify(result), 201
 
-@app_views.route('/places/<place_id>', methods=['GET'], strict_slashes=False)
+
+@app_views.route('/places/<place_id>',
+                 methods=['GET'],
+                 strict_slashes=False)
 def get_place(place_id):
     """Gets a place by ID"""
     place = storage.get('Place', place_id)
@@ -27,7 +33,10 @@ def get_place(place_id):
         abort(404)
     return jsonify(place.to_dict()), 201
 
-@app_views.route('/places/<place_id>', methods=['DELETE'], strict_slashes=False)
+
+@app_views.route('/places/<place_id>',
+                 methods=['DELETE'],
+                 strict_slashes=False)
 def delete_place(place_id):
     """Deletes a place by ID"""
     place = storage.get('Place', place_id)
@@ -38,7 +47,10 @@ def delete_place(place_id):
         storage.save()
         return {}, 201
 
-@app_views.route('/cities/<city_id>/places', methods=['POST'], strict_slashes=False)
+
+@app_views.route('/cities/<city_id>/places',
+                 methods=['POST'],
+                 strict_slashes=False)
 def create_place(city_id):
     """Creates a place in city of city_id"""
     city = storage.get('City', city_id)
@@ -59,7 +71,10 @@ def create_place(city_id):
         place.save()
         return jsonify(place.to_dict()), 201
 
-@app_views.route('/places/<place_id>', methods=['PUT'], strict_slashes=False)
+
+@app_views.route('/places/<place_id>',
+                 methods=['PUT'],
+                 strict_slashes=False)
 def update_place(place_id):
     """Updates place by ID"""
     place = storage.get('Place', place_id)
