@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Flask view for Place class"""
 
 from models.place import Place
 from flask import jsonify, abort, request

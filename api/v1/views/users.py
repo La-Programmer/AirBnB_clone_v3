@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Flask view for User class"""
 
 from models.user import User
 from flask import jsonify, abort, request

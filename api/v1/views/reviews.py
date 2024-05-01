@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Flask view for Review class"""
 
 from models.review import Review
 from flask import jsonify, abort, request

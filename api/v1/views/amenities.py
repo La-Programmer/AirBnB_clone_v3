@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Flask view for Amenity class"""
 
 from models.amenity import Amenity
 from flask import jsonify, abort, request

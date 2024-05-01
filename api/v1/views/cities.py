@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""flask view for the city class"""
+"""Flask view for the city class"""
+
 from models.city import City
 from flask import jsonify, abort, request
 from models import storage
