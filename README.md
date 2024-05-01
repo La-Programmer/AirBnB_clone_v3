@@ -155,13 +155,48 @@ EOF  all  create  destroy  help  quit  show  update
 ### General Endpoints
 1. Get the status of your API http://<host>:<port>/api/v1/status (GET)
 2. Get the number of each object by type http://<host>:<port>/api/v1/stats (GET)
+
 ### State Endpoints
 1. Get the list of all State objects http://<host>:<port>/api/v1/states (GET)
 2. Get a state by ID http://<host>:<port>/api/v1/states/<state_id>
 3. Delete a state by ID http://<host>:<port>/api/v1/states/<state_id> (DELETE)
 4. Create a new state http://<host>:<port>/api/v1/states/ (POST)
 5. Update a state http://<host>:<port>/api/v1/states/<state_id> (PUT)
+
 ### City Endpoints
+1. Get the list of all City objects http://<host>:<port>/api/v1/states/<state_id>/cities (GET)
+2. Get a city by ID http://<host>:<port>/api/v1/cities/<city_id>
+3. Delete a city by ID http://<host>:<port>/api/v1/cities/<city_id> (DELETE)
+4. Create a new city http://<host>:<port>/api/v1/states/<state_id>/cities (POST)
+5. Update a city http://<host>:<port>/api/v1/cities/<city_id> (PUT)
+
+### Amenity Endpoints
+1. Get the list of all Amenities objects http://<host>:<port>/api/v1/amenities (GET)
+2. Get a Amenities by ID http://<host>:<port>/api/v1/amenities/<amenity_id>
+3. Delete a Amenities by ID http://<host>:<port>/api/v1/amenities/<amenity_id> (DELETE)
+4. Create a new Amenities http://<host>:<port>/api/v1/amenities (POST)
+5. Update a Amenities http://<host>:<port>/api/v1/amenities/<amenity_id> (PUT)
+
+### Users Endpoints
+1. Get the list of all Users objects http://<host>:<port>/api/v1/users (GET)
+2. Get a Users by ID http://<host>:<port>/api/v1/users/<user_id>
+3. Delete a Users by ID http://<host>:<port>/api/v1/users/<user_id> (DELETE)
+4. Create a new Users http://<host>:<port>/api/v1/users (POST)
+5. Update a Users http://<host>:<port>/api/v1/users/<user_id> (PUT)
+
+### Place Endpoints
+1. Get the list of all Place objects http://<host>:<port>/api/v1/cities/<city_id>/places (GET)
+2. Get a Place by ID http://<host>:<port>/api/v1/places/<place_id>
+3. Delete a Place by ID http://<host>:<port>/api/v1/places/<place_id> (DELETE)
+4. Create a new Place http://<host>:<port>/api/v1/cities/<city_id>/places (POST)
+5. Update a Place http://<host>:<port>/api/v1/places/<place_id> (PUT)
+
+### Review Endpoints
+1. Get the list of all review objects http://<host>:<port>/api/v1/places/<place_id>/reviews (GET)
+2. Get a review by ID http://<host>:<port>/api/v1/reviews/<review_id>
+3. Delete a review by ID http://<host>:<port>/api/v1/reviews/<review_id> (DELETE)
+4. Create a new review http://<host>:<port>/api/v1/places/<place_id>/reviews (POST)
+5. Update a review http://<host>:<port>/api/v1/reviews/<review_id> (PUT)
 
 ## Bugs
 No known bugs at this time. 
