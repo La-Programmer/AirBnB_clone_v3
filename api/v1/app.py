@@ -18,13 +18,10 @@ def reload_session(exception):
     """Reload the DB session"""
     storage.close()
 
-
+@app.errorhandler(404)
 def page_not_found(error):
     """404 error handler"""
     return jsonify({"error": "Not found"})
-
-
-app.errorhandler(404)(page_not_found)
 
 
 if __name__ == '__main__':
