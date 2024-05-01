@@ -26,6 +26,7 @@ def page_not_found(error):
 
 app.errorhandler(404)(page_not_found)
 
+
 if __name__ == '__main__':
     host = getenv('HBNB_API_HOST')
     port = getenv('HBNB_API_PORT')
