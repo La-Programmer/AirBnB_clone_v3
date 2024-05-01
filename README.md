@@ -150,6 +150,19 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb) quit
 ```
 
+
+## RESTful API Endpoints
+### General Endpoints
+1. Get the status of your API http://<host>:<port>/api/v1/status (GET)
+2. Get the number of each object by type http://<host>:<port>/api/v1/stats (GET)
+### State Endpoints
+1. Get the list of all State objects http://<host>:<port>/api/v1/states (GET)
+2. Get a state by ID http://<host>:<port>/api/v1/states/<state_id>
+3. Delete a state by ID http://<host>:<port>/api/v1/states/<state_id> (DELETE)
+4. Create a new state http://<host>:<port>/api/v1/states/ (POST)
+5. Update a state http://<host>:<port>/api/v1/states/<state_id> (PUT)
+### City Endpoints
+
 ## Bugs
 No known bugs at this time. 
 
