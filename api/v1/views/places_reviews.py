@@ -60,6 +60,7 @@ def create_review(place_id):
     elif not request.json:
         return jsonify({"error": "Not a JSON"}), 400
     data = request.get_json()
+    data['place_id'] = place_id
     if "user_id" not in data:
         return jsonify({"error": "Missing user_id"})
     elif "text" not in data:
@@ -68,7 +69,7 @@ def create_review(place_id):
         user = storage.get('User', data["user_id"])
         if not user:
             abort(404)
-        review = Review(**data, place_id=place_id)
+        review = Review(**data)
         review.save()
         return jsonify(review.to_dict()), 201
 
