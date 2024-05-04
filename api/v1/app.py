@@ -19,6 +19,7 @@ def reload_session(exception):
     """Reload the DB session"""
     storage.close()
 
+
 @app.errorhandler(404)
 def page_not_found(error):
     """404 error handler"""
