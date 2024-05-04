@@ -22,7 +22,7 @@ def reload_session(exception):
 @app.errorhandler(404)
 def page_not_found(error):
     """404 error handler"""
-    return jsonify({"error": "Not found"})
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == '__main__':
